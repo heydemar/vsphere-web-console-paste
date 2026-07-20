@@ -72,7 +72,8 @@ pasteButton.addEventListener("click", async () => {
     });
 
     if (!response?.ok) throw new Error(response?.error || "Unbekannter Fehler");
-    setStatus(`${response.count} Zeichen übertragen.`);
+    const mode = response.mode === "direct" ? "Direktmodus" : "Kompatibilitätsmodus";
+    setStatus(`${response.count} Zeichen übertragen · ${mode}`);
     textInput.value = "";
   } catch (error) {
     setStatus(`Fehler: ${error.message}`, true);

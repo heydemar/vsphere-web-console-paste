@@ -2,6 +2,76 @@ const DEBUGGER_VERSION = "1.3";
 
 const sleep = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
 
+async function sendDirectly(tabId, text) {
+  const [{ result }] = await chrome.scripting.executeScript({
+    target: { tabId },
+    world: "MAIN",
+    args: [text],
+    func: (input) => {
+      const isClient = (value) =>
+        value &&
+        typeof value === "object" &&
+        typeof value.sendInputString === "function";
+
+      const candidates = [];
+      const addCandidate = (value) => {
+        if (isClient(value) && !candidates.includes(value)) candidates.push(value);
+      };
+
+      // vCenter builds have exposed the active client under different names.
+      for (const name of ["wmks", "webmks", "wmksInstance", "webMks"]) {
+        try {
+          addCandidate(window[name]);
+        } catch {
+          // Ignore protected or lazy global properties.
+        }
+      }
+
+      // WebMKS SDK integrations commonly keep the instance in jQuery data.
+      try {
+        if (window.jQuery) {
+          for (const element of document.querySelectorAll("canvas, [id*='wmks' i], [class*='wmks' i]")) {
+            const data = window.jQuery(element).data();
+            addCandidate(data);
+            if (data && typeof data === "object") {
+              for (const value of Object.values(data)) addCandidate(value);
+            }
+          }
+        }
+      } catch {
+        // Continue with a shallow global scan.
+      }
+
+      // Last resort for minified vCenter builds that use a generated global name.
+      for (const name of Object.getOwnPropertyNames(window)) {
+        if (candidates.length) break;
+        try {
+          const value = window[name];
+          addCandidate(value);
+          if (
+            value &&
+            typeof value === "object" &&
+            /wmks|console/i.test(name)
+          ) {
+            for (const nested of Object.values(value)) addCandidate(nested);
+          }
+        } catch {
+          // Some Window properties throw when read across security boundaries.
+        }
+      }
+
+      if (!candidates.length) {
+        return { ok: false, reason: "WebMKS-Instanz nicht direkt erreichbar." };
+      }
+
+      candidates[0].sendInputString(input);
+      return { ok: true };
+    }
+  });
+
+  return result?.ok === true;
+}
+
 const digitCodes = {
   "0": ["Digit0", 48], "1": ["Digit1", 49], "2": ["Digit2", 50],
   "3": ["Digit3", 51], "4": ["Digit4", 52], "5": ["Digit5", 53],
@@ -127,6 +197,14 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     const debuggee = { tabId: message.tabId };
     let attached = false;
     try {
+      if (await sendDirectly(message.tabId, message.text)) {
+        return {
+          ok: true,
+          count: [...message.text].length,
+          mode: "direct"
+        };
+      }
+
       await chrome.debugger.attach(debuggee, DEBUGGER_VERSION);
       attached = true;
       await focusConsole(message.tabId);
@@ -136,7 +214,11 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
         await sendKey(debuggee, keyForCharacter(character, message.layout));
         await sleep(message.delay);
       }
-      return { ok: true, count: [...message.text].length };
+      return {
+        ok: true,
+        count: [...message.text].length,
+        mode: "compatibility"
+      };
     } finally {
       if (attached) await chrome.debugger.detach(debuggee).catch(() => {});
     }

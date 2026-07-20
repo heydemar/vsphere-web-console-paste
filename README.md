@@ -21,9 +21,12 @@ it for administrative commands. German and US keyboard layouts are supported.
 5. Open a vSphere VM in a separate web console window.
 6. Open the extension, check the text and select **Type into VM**.
 
-Chrome warns about the debugger permission. The extension uses the Chrome
-debugging protocol only while text is being typed into the active console tab,
-then immediately detaches. No clipboard contents are stored.
+The extension first uses WebMKS's own `sendInputString()` API. This avoids
+synthetic per-key browser input and unnecessary console redraws. If the active
+vCenter build does not expose its WebMKS instance, the extension automatically
+falls back to the Chrome debugging protocol. Chrome therefore still warns
+about the debugger permission. The fallback attaches only while text is being
+typed and immediately detaches. No clipboard contents are stored.
 
 ## Safety
 
@@ -42,6 +45,8 @@ then immediately detaches. No clipboard contents are stored.
 - Keyboard handling can vary with the guest OS, browser and vSphere build.
 - Unsupported characters stop the transfer with an error.
 - A different keyboard layout in the guest produces incorrect characters.
+- The popup reports `Direct mode` or `Compatibility mode` after each transfer.
+  Compatibility mode can cause more console redraws.
 
 ## License
 
