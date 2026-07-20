@@ -51,9 +51,9 @@ extension. Permanent vCenter host access is not requested.
 
 ### clipboardRead
 
-Reads text from the local clipboard after the user opens the popup or explicitly
-selects the clipboard button. The text is displayed for review and is not
-stored or transmitted to the developer.
+Reads text from the local clipboard only after the user explicitly selects the
+clipboard button. The text is displayed for review and is not stored or
+transmitted to the developer.
 
 ### scripting
 

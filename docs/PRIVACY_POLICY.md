@@ -8,7 +8,9 @@ console.
 
 ## Data processing
 
-- Clipboard text is processed locally in the Chrome extension.
+- Clipboard text is read only after the user explicitly selects the
+  **Zwischenablage lesen** button and is processed locally in the Chrome
+  extension.
 - Clipboard text is not stored after the extension popup closes.
 - Clipboard text is not transmitted to the developer or any third party.
 - The extension does not use analytics, advertising, tracking, cookies, or
@@ -39,8 +41,7 @@ user-reviewed text into the active vSphere web console.
 
 - `activeTab`: limits page access to the tab on which the user invokes the
   extension.
-- `clipboardRead`: reads text only after the user opens the extension or clicks
-  the clipboard button.
+- `clipboardRead`: reads text only after the user clicks the clipboard button.
 - `scripting`: invokes the WebMKS input method in the active console page after
   the user confirms the text.
 - `storage`: stores the optional signed license and supports enterprise-managed

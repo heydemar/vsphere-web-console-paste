@@ -82,7 +82,7 @@ async function initialize() {
     : "Kein vSphere-Webkonsolenfenster aktiv";
 
   await refreshEntitlement();
-  await readClipboard();
+  elements.text.focus();
 }
 
 elements.text.addEventListener("input", render);
