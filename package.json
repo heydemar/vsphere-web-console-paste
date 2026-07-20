@@ -1,0 +1,10 @@
+{
+  "name": "console-paste-for-vsphere",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "build": "node scripts/build-release.mjs"
+  }
+}

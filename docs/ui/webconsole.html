@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Console Paste reviewer demo</title>
+    <style>
+      :root { color-scheme: dark; font-family: system-ui, sans-serif; }
+      body { margin: 0; background: #07111f; color: #e6edf7; }
+      header { padding: 18px 24px; border-bottom: 1px solid #26354a; }
+      header strong { display: block; font-size: 16px; }
+      header span { color: #9aabc0; font-size: 13px; }
+      main { padding: 36px; }
+      .console {
+        min-height: 360px;
+        border: 1px solid #344965;
+        border-radius: 12px;
+        padding: 24px;
+        background: #030812;
+        box-shadow: 0 20px 60px #0007;
+        color: #76f3bd;
+        font: 17px/1.7 ui-monospace, SFMono-Regular, Consolas, monospace;
+        white-space: pre-wrap;
+      }
+      .hint { margin-top: 18px; color: #9aabc0; font-size: 13px; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <strong>Reviewer demo console</strong>
+      <span>This page simulates only the WebMKS text-input method. It is not connected to a VM.</span>
+    </header>
+    <main>
+      <div id="wmksContainer" class="console"><canvas width="800" height="1"></canvas><span id="output">demo@vm:~$ </span></div>
+      <p class="hint">Open Console Paste for vSphere and send up to 12 characters.</p>
+    </main>
+    <script>
+      window.WMKS = { demo: true };
+      window.wmks = {
+        sendInputString(input) {
+          document.querySelector("#output").append(document.createTextNode(input));
+        }
+      };
+    </script>
+  </body>
+</html>

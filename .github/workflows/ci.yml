@@ -1,0 +1,27 @@
+name: Validate extension
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm test
+      - run: npm run build
+      - name: Create reviewed store package
+        run: |
+          cd dist/extension
+          zip -qr ../console-paste-for-vsphere-${{ github.sha }}.zip .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chrome-web-store-package
+          path: dist/*.zip

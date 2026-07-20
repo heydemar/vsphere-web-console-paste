@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Console Paste store preview</title>
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        width: 1280px;
+        height: 800px;
+        margin: 0;
+        overflow: hidden;
+        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+        color: #f8fafc;
+        background:
+          radial-gradient(circle at 15% 15%, #164e63 0, transparent 30%),
+          linear-gradient(145deg, #071426, #101828);
+      }
+      .copy {
+        position: absolute;
+        top: 115px;
+        left: 90px;
+        width: 520px;
+      }
+      h1 {
+        margin: 0 0 20px;
+        font-size: 54px;
+        line-height: 1.05;
+        letter-spacing: -0.045em;
+      }
+      .copy p {
+        margin: 0;
+        max-width: 490px;
+        color: #b9d9e8;
+        font-size: 22px;
+        line-height: 1.5;
+      }
+      .terminal {
+        position: absolute;
+        left: 90px;
+        bottom: 86px;
+        width: 540px;
+        height: 220px;
+        border: 1px solid #35536f;
+        border-radius: 14px;
+        background: #050c18;
+        box-shadow: 0 30px 80px #0008;
+      }
+      .terminal-bar {
+        display: flex;
+        gap: 8px;
+        height: 38px;
+        padding: 13px 15px;
+        border-bottom: 1px solid #1f344a;
+      }
+      .terminal-bar span {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #45647e;
+      }
+      pre {
+        margin: 0;
+        padding: 23px;
+        color: #73f7c5;
+        font: 17px/1.7 ui-monospace, SFMono-Regular, Consolas, monospace;
+      }
+      .popup {
+        position: absolute;
+        top: 70px;
+        right: 95px;
+        width: 380px;
+        height: 610px;
+        border: 0;
+        border-radius: 15px;
+        background: #f5f7fa;
+        box-shadow: 0 35px 100px #0009;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        margin-top: 30px;
+        border: 1px solid #2b6174;
+        border-radius: 999px;
+        padding: 8px 13px;
+        color: #8ef4d2;
+        font-size: 13px;
+        font-weight: 750;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="copy">
+      <h1>Clipboard-Text sicher in die Webkonsole eingeben.</h1>
+      <p>Text lokal prüfen und direkt an die aktive vSphere-Webkonsole übergeben.</p>
+      <span class="badge">Keine Analyse · Keine Werbung · Kein Debugger-Zugriff</span>
+    </section>
+    <div class="terminal">
+      <div class="terminal-bar"><span></span><span></span><span></span></div>
+      <pre>ubuntu@vm:~$ Hello123
+Text entered through WebMKS_
+      </pre>
+    </div>
+    <iframe class="popup" src="popup-harness.html" title="Extension popup"></iframe>
+  </body>
+</html>

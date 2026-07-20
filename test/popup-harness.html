@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Console Paste for vSphere</title>
-    <link rel="stylesheet" href="popup.css">
+    <title>Popup test harness</title>
+    <link rel="stylesheet" href="../popup.css">
   </head>
   <body>
     <main>
       <header>
-        <img src="icons/icon-48.png" width="42" height="42" alt="">
+        <img src="../icons/icon-48.png" width="42" height="42" alt="">
         <div class="identity">
           <div class="title-row">
             <h1>Console Paste</h1>
@@ -18,26 +18,16 @@
           <p id="target">Konsole wird geprüft …</p>
         </div>
       </header>
-
       <div class="field-heading">
         <label for="text">Text für die VM</label>
         <span id="counter">0 / 12</span>
       </div>
-      <textarea
-        id="text"
-        rows="7"
-        spellcheck="false"
-        placeholder="Text prüfen und anschließend übertragen"
-        autofocus
-      ></textarea>
-
+      <textarea id="text" rows="7" spellcheck="false" placeholder="Text prüfen und anschließend übertragen"></textarea>
       <div class="actions">
         <button id="clipboard" class="secondary" type="button">Zwischenablage lesen</button>
         <button id="paste" type="button">In VM eingeben</button>
       </div>
-
       <p id="status" role="status" aria-live="polite"></p>
-
       <details id="license-panel">
         <summary>Pro oder Enterprise aktivieren</summary>
         <p>Signierte Lizenz eingeben, um das Zeichenlimit aufzuheben.</p>
@@ -48,12 +38,34 @@
           <button id="deactivate" class="text-button" type="button" hidden>Lizenz entfernen</button>
         </div>
       </details>
-
-      <p class="privacy">
-        Text und Lizenzprüfung bleiben lokal. Zeilenumbrüche werden als Enter übertragen.
-      </p>
+      <p class="privacy">Text und Lizenzprüfung bleiben lokal. Zeilenumbrüche werden als Enter übertragen.</p>
       <p class="disclaimer">Nicht von VMware oder Broadcom entwickelt oder unterstützt.</p>
     </main>
-    <script src="popup.js"></script>
+    <script>
+      navigator.clipboard.readText = async () => "";
+      globalThis.chrome = {
+        tabs: {
+          query: async () => [{
+            id: 1,
+            url: "https://vcenter.example/ui/webconsole.html?vmId=vm-1"
+          }]
+        },
+        runtime: {
+          sendMessage: async (message) => {
+            if (message.type === "GET_ENTITLEMENT") {
+              return {
+                ok: true,
+                entitlement: { plan: "free", source: "default" }
+              };
+            }
+            if (message.type === "TYPE_IN_CONSOLE") {
+              return { ok: true, count: [...message.text].length, plan: "free" };
+            }
+            return { ok: false, error: "Test harness" };
+          }
+        }
+      };
+    </script>
+    <script src="../popup.js"></script>
   </body>
 </html>

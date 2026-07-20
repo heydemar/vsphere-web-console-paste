@@ -25,15 +25,20 @@ header {
   margin-bottom: 16px;
 }
 
-.mark {
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
+header img {
   border-radius: 10px;
-  color: white;
-  background: #0875e1;
-  font: 700 17px/1 ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.identity {
+  min-width: 0;
+  flex: 1;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
 }
 
 h1 {
@@ -42,10 +47,54 @@ h1 {
 }
 
 header p,
-.privacy {
+.privacy,
+.disclaimer,
+details p {
   margin: 0;
   color: #667085;
   font-size: 12px;
+}
+
+.plan {
+  border-radius: 999px;
+  padding: 3px 7px;
+  color: #475467;
+  background: #eaecf0;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.plan[data-plan="pro"] {
+  color: #175cd3;
+  background: #dbeafe;
+}
+
+.plan[data-plan="enterprise"] {
+  color: #067647;
+  background: #d1fadf;
+}
+
+.field-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.field-heading label {
+  margin: 0;
+}
+
+#counter {
+  color: #667085;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+#counter.over-limit {
+  color: #b42318;
+  font-weight: 700;
 }
 
 label {
@@ -72,23 +121,9 @@ textarea {
   font-size: 13px;
 }
 
-textarea:focus,
-select:focus {
+textarea:focus {
   outline: 2px solid #84bfff;
   border-color: #0875e1;
-}
-
-.controls {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-top: 12px;
-}
-
-select {
-  height: 34px;
-  padding: 0 8px;
-  font-size: 13px;
 }
 
 .actions {
@@ -133,4 +168,47 @@ button:disabled {
 
 .privacy {
   line-height: 1.45;
+}
+
+details {
+  margin: 8px 0 12px;
+  border-top: 1px solid #e4e7ec;
+  padding-top: 10px;
+}
+
+summary {
+  color: #344054;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+details p {
+  margin: 8px 0 10px;
+  line-height: 1.4;
+}
+
+#license-key {
+  font-size: 11px;
+}
+
+.license-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.license-actions button {
+  min-height: 34px;
+}
+
+button.text-button {
+  color: #475467;
+  background: transparent;
+}
+
+.disclaimer {
+  margin-top: 5px;
+  line-height: 1.4;
 }

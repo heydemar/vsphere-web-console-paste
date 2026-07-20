@@ -1,16 +1,19 @@
-# vSphere Web Console Paste
+# Console Paste for vSphere
 
-Chrome extension that types clipboard text into the VMware vSphere 8 HTML5 web
-console. It is intended for the separate `/ui/webconsole.html` console window.
+A privacy-focused Chrome extension that types reviewed clipboard text into a
+VMware vSphere 8 HTML5 web console.
 
-VMware deliberately does not expose guest clipboard sharing in WebMKS. This
-extension therefore converts text to keyboard events; it does not enable a
-shared clipboard and cannot copy text out of a VM.
+The extension uses WebMKS's own `sendInputString()` API. It does not enable
+shared clipboard access, copy text out of a VM, transfer files, or use Chrome's
+debugger permission.
 
-## Current status
+## Plans
 
-This is an early proof of concept. Test it with non-sensitive text before using
-it for administrative commands. German and US keyboard layouts are supported.
+- **Free:** up to 12 Unicode characters per transfer
+- **Pro:** unlimited characters with an offline signed license
+- **Enterprise:** unlimited characters and managed Chrome policy deployment
+
+Pricing and public license sales are not enabled yet.
 
 ## Install locally
 
@@ -19,34 +22,32 @@ it for administrative commands. German and US keyboard layouts are supported.
 3. Enable **Developer mode**.
 4. Select **Load unpacked** and choose this repository folder.
 5. Open a vSphere VM in a separate web console window.
-6. Open the extension, check the text and select **Type into VM**.
+6. Open the extension, review the text and select **In VM eingeben**.
 
-The extension first uses WebMKS's own `sendInputString()` API. This avoids
-synthetic per-key browser input and unnecessary console redraws. If the active
-vCenter build does not expose its WebMKS instance, the extension automatically
-falls back to the Chrome debugging protocol. Chrome therefore still warns
-about the debugger permission. The fallback attaches only while text is being
-typed and immediately detaches. No clipboard contents are stored.
+## Development
 
-## Safety
+Use Node.js 20 or newer.
 
-- The extension runs only after its toolbar button is clicked.
-- It validates that the active page uses HTTPS and the exact
-  `/ui/webconsole.html` path.
-- It requests `activeTab` instead of permanent access to vCenter hosts.
-- Clipboard text is kept only in the extension popup and cleared after a
-  successful transfer.
-- Newlines are sent as Enter and can execute commands. Review text before
-  sending it.
+```bash
+npm test
+npm run build
+```
 
-## Limitations
+The build command rejects the package if it contains the `debugger` permission
+or `<all_urls>` access, then writes the reviewed extension files to
+`dist/extension`.
 
-- Text input only; no files or guest-to-client clipboard.
-- Keyboard handling can vary with the guest OS, browser and vSphere build.
-- Unsupported characters stop the transfer with an error.
-- A different keyboard layout in the guest produces incorrect characters.
-- The popup reports `Direct mode` or `Compatibility mode` after each transfer.
-  Compatibility mode can cause more console redraws.
+## Privacy and store preparation
+
+- [Privacy policy](docs/PRIVACY_POLICY.md)
+- [Store listing draft](docs/STORE_LISTING.md)
+- [Reviewer instructions](docs/STORE_REVIEW_INSTRUCTIONS.md)
+- [Licensing operations](docs/LICENSING.md)
+
+## Trademark notice
+
+VMware and vSphere are trademarks of their respective owners. This project is
+not affiliated with, endorsed by, or supported by VMware or Broadcom.
 
 ## License
 

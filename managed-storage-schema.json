@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "enterpriseLicenseKey": {
+      "title": "Enterprise license key",
+      "description": "Signed enterprise license distributed by an administrator.",
+      "type": "string"
+    }
+  }
+}
