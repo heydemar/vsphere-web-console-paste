@@ -28,6 +28,8 @@ Pro and Enterprise:
 - Unlimited characters per transfer
 - Offline signed license verification
 - Enterprise license distribution through Chrome managed storage
+- Licenses are currently issued manually on request through
+  `info@heyder-net.de`
 
 Important:
 
@@ -36,6 +38,12 @@ Important:
 - Intended for separate HTTPS vSphere console windows whose path is
   `/ui/webconsole.html`
 - Not developed, endorsed, or supported by VMware or Broadcom
+
+## License requests
+
+Pro and Enterprise licenses are currently issued manually. Users can request
+pricing and license terms by emailing `info@heyder-net.de`. Google is not the
+seller and does not process the transaction.
 
 ## Single purpose
 

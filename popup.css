@@ -55,6 +55,11 @@ details p {
   font-size: 12px;
 }
 
+details a {
+  color: #0875e1;
+  font-weight: 650;
+}
+
 .plan {
   border-radius: 999px;
   padding: 3px 7px;

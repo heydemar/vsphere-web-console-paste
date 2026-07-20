@@ -60,7 +60,11 @@ the Chrome Web Store listing before they take effect.
 
 ## Contact
 
-Privacy and support requests can be opened at:
+Privacy, support, and license requests can be sent to:
+
+info@heyder-net.de
+
+Requests can also be opened at:
 https://github.com/heydemar/vsphere-web-console-paste/issues
 
 The use of information received from Chrome APIs adheres to the Chrome Web

@@ -41,6 +41,7 @@ tax handling, automated license issuance, revocation, and customer identity
 must be decided before licenses are sold.
 
 The current offline token is suitable for pilots and manually issued licenses.
+License requests are directed to `info@heyder-net.de`.
 At larger scale, add a minimal HTTPS licensing service that returns signed
 tokens. Clipboard text, console URLs, VM data, and credentials must never be
 sent to that service.
