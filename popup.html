@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>vSphere Console Paste</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <span class="mark" aria-hidden="true">›_</span>
+        <div>
+          <h1>Console Paste</h1>
+          <p id="target">Konsole wird geprüft …</p>
+        </div>
+      </header>
+
+      <label for="text">Text für die VM</label>
+      <textarea id="text" rows="7" spellcheck="false" autofocus></textarea>
+
+      <div class="controls">
+        <label>
+          Tastaturlayout
+          <select id="layout">
+            <option value="de">Deutsch</option>
+            <option value="us">US English</option>
+          </select>
+        </label>
+        <label>
+          Verzögerung
+          <select id="delay">
+            <option value="5">Schnell</option>
+            <option value="20" selected>Normal</option>
+            <option value="50">Langsam</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="actions">
+        <button id="clipboard" class="secondary" type="button">Zwischenablage</button>
+        <button id="paste" type="button">In VM eingeben</button>
+      </div>
+
+      <p id="status" role="status" aria-live="polite"></p>
+      <p class="privacy">Der Text wird nicht gespeichert. Zeilenumbrüche werden als Enter übertragen.</p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

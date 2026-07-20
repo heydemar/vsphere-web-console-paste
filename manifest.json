@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "vSphere Web Console Paste",
+  "version": "0.1.0",
+  "description": "Types clipboard text into a VMware vSphere HTML5 web console.",
+  "permissions": [
+    "activeTab",
+    "clipboardRead",
+    "debugger",
+    "scripting",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "action": {
+    "default_title": "Paste into vSphere console",
+    "default_popup": "popup.html"
+  }
+}
