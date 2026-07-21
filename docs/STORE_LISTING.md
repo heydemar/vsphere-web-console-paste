@@ -19,7 +19,7 @@ API.
 
 Free:
 
-- Up to 12 characters per transfer
+- Up to 6 characters per transfer
 - Local clipboard processing
 - No account, analytics, advertising, or telemetry
 

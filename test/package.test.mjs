@@ -33,6 +33,6 @@ test("does not load remotely hosted scripts", () => {
 
 test("enforces the Free limit in the service worker", () => {
   const worker = readFileSync("service-worker.js", "utf8");
-  assert.match(worker, /FREE_CHARACTER_LIMIT = 12/);
+  assert.match(worker, /FREE_CHARACTER_LIMIT = 6/);
   assert.match(worker, /entitlement\.plan === "free"/);
 });

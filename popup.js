@@ -1,4 +1,4 @@
-const FREE_CHARACTER_LIMIT = 12;
+const FREE_CHARACTER_LIMIT = 6;
 
 const elements = {
   text: document.querySelector("#text"),

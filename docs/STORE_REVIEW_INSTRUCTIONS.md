@@ -20,19 +20,19 @@ not connected to a VM.
 
 1. Open the reviewer demo.
 2. Open the extension popup.
-3. Enter `Hello123`.
+3. Enter `Hello!`.
 4. Select **In VM eingeben**.
 5. Confirm that the text appears after the demo prompt.
-6. Enter 13 characters and confirm that Free prevents the transfer.
+6. Enter 7 characters and confirm that Free prevents the transfer.
 
 ## Review with vSphere
 
 1. Open a VM in a separate vSphere 8 web console.
 2. Open the extension.
-3. Enter `Hello123`.
+3. Enter `Hello!`.
 4. Select **In VM eingeben**.
 5. Confirm that the text appears in the VM console.
-6. Enter 13 characters and confirm that Free prevents the transfer.
+6. Enter 7 characters and confirm that Free prevents the transfer.
 
 ## Security notes
 

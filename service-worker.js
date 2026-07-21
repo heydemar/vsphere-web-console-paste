@@ -1,6 +1,6 @@
 importScripts("license.js");
 
-const FREE_CHARACTER_LIMIT = 12;
+const FREE_CHARACTER_LIMIT = 6;
 
 function isConsoleUrl(value) {
   try {

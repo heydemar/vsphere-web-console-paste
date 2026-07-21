@@ -1,6 +1,6 @@
 # Licensing operations
 
-Free allows 12 Unicode characters per transfer. Pro and Enterprise remove that
+Free allows 6 Unicode characters per transfer. Pro and Enterprise remove that
 limit after an Ed25519-signed license is activated.
 
 ## Private key

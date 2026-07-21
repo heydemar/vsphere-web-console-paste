@@ -9,7 +9,7 @@ debugger permission.
 
 ## Plans
 
-- **Free:** up to 12 Unicode characters per transfer
+- **Free:** up to 6 Unicode characters per transfer
 - **Pro:** unlimited characters with an offline signed license
 - **Enterprise:** unlimited characters and managed Chrome policy deployment
 
