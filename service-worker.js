@@ -11,8 +11,8 @@ function isConsoleUrl(value) {
   }
 }
 
-async function sendDirectly(tabId, text) {
-  const operations = ConsoleInput.buildOperations(text);
+async function sendDirectly(tabId, text, keyboardLayout) {
+  const operations = ConsoleInput.buildOperations(text, keyboardLayout);
   const [{ result }] = await chrome.scripting.executeScript({
     target: { tabId },
     world: "MAIN",
@@ -77,10 +77,11 @@ async function sendDirectly(tabId, text) {
       try {
         const client = candidates[0];
         for (const operation of inputOperations) {
-          if (operation.type === "unicode" && typeof client.sendKeyCodes === "function") {
-            client.sendKeyCodes([-operation.codePoint]);
-          } else if (operation.type === "unicode") {
-            client.sendInputString(String.fromCodePoint(operation.codePoint));
+          if (operation.type === "keys") {
+            if (typeof client.sendKeyCodes !== "function") {
+              throw new Error("WebMKS stellt keine Tastencode-Eingabe bereit.");
+            }
+            client.sendKeyCodes(operation.keyCodes);
           } else {
             client.sendInputString(operation.value);
           }
@@ -129,7 +130,7 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
       throw new Error(`Free unterstützt maximal ${FREE_CHARACTER_LIMIT} Zeichen pro Übertragung.`);
     }
 
-    const result = await sendDirectly(message.tabId, text);
+    const result = await sendDirectly(message.tabId, text, message.keyboardLayout);
     if (!result.ok) throw new Error(result.error);
 
     return {

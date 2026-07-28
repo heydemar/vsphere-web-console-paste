@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Console Paste for vSphere",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Types reviewed clipboard text into a VMware vSphere HTML5 web console.",
   "permissions": [
     "activeTab",

@@ -7,6 +7,7 @@ const elements = {
   target: document.querySelector("#target"),
   status: document.querySelector("#status"),
   counter: document.querySelector("#counter"),
+  keyboardLayout: document.querySelector("#keyboard-layout"),
   plan: document.querySelector("#plan"),
   licensePanel: document.querySelector("#license-panel"),
   licenseKey: document.querySelector("#license-key"),
@@ -81,12 +82,17 @@ async function initialize() {
     ? new URL(activeTab.url).hostname
     : "Kein vSphere-Webkonsolenfenster aktiv";
 
+  const { keyboardLayout = "de" } = await chrome.storage.local.get("keyboardLayout");
+  elements.keyboardLayout.value = keyboardLayout;
   await refreshEntitlement();
   elements.text.focus();
 }
 
 elements.text.addEventListener("input", render);
 elements.clipboard.addEventListener("click", readClipboard);
+elements.keyboardLayout.addEventListener("change", () => {
+  chrome.storage.local.set({ keyboardLayout: elements.keyboardLayout.value });
+});
 
 elements.paste.addEventListener("click", async () => {
   busy = true;
@@ -97,7 +103,8 @@ elements.paste.addEventListener("click", async () => {
     const response = await chrome.runtime.sendMessage({
       type: "TYPE_IN_CONSOLE",
       tabId: activeTab.id,
-      text: elements.text.value
+      text: elements.text.value,
+      keyboardLayout: elements.keyboardLayout.value
     });
     if (!response?.ok) throw new Error(response?.error || "Unbekannter Fehler");
 

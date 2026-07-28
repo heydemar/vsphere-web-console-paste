@@ -31,7 +31,7 @@ test("packages the keyboard-layout-safe input helper", () => {
   const build = readFileSync("scripts/build-release.mjs", "utf8");
   assert.equal(existsSync("input.js"), true);
   assert.match(worker, /importScripts\("license\.js", "input\.js"\)/);
-  assert.match(worker, /sendKeyCodes\(\[-operation\.codePoint\]\)/);
+  assert.match(worker, /sendKeyCodes\(operation\.keyCodes\)/);
   assert.match(build, /"input\.js"/);
 });
 

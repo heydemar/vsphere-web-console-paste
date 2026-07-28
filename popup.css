@@ -131,6 +131,22 @@ textarea:focus {
   border-color: #0875e1;
 }
 
+.layout-field {
+  margin-top: 10px;
+  color: #475467;
+}
+
+#keyboard-layout {
+  height: 34px;
+  padding: 0 9px;
+  font-size: 12px;
+}
+
+#keyboard-layout:focus {
+  outline: 2px solid #84bfff;
+  border-color: #0875e1;
+}
+
 .actions {
   display: flex;
   gap: 8px;
