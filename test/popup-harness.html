@@ -26,8 +26,9 @@
       <label class="layout-field" for="keyboard-layout">
         Tastaturlayout der VM
         <select id="keyboard-layout">
-          <option value="de">Deutsch (DE) – Sonderzeichen korrigieren</option>
-          <option value="auto">Automatisch / US</option>
+          <option value="de-DE">Deutsch (Deutschland)</option>
+          <option value="en-US">Englisch (USA)</option>
+          <option value="auto">WebMKS-Standard nicht ändern</option>
         </select>
       </label>
       <div class="actions">
@@ -78,7 +79,7 @@
         },
         storage: {
           local: {
-            get: async () => ({ keyboardLayout: "de" }),
+            get: async () => ({ keyboardLayout: "de-DE" }),
             set: async () => undefined
           }
         }

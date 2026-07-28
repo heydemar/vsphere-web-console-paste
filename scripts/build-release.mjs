@@ -21,7 +21,6 @@ for (const path of [
   "manifest.json",
   "managed-storage-schema.json",
   "license.js",
-  "input.js",
   "service-worker.js",
   "popup.html",
   "popup.css",

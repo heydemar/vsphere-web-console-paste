@@ -82,7 +82,7 @@ async function initialize() {
     ? new URL(activeTab.url).hostname
     : "Kein vSphere-Webkonsolenfenster aktiv";
 
-  const { keyboardLayout = "de" } = await chrome.storage.local.get("keyboardLayout");
+  const { keyboardLayout = "de-DE" } = await chrome.storage.local.get("keyboardLayout");
   elements.keyboardLayout.value = keyboardLayout;
   await refreshEntitlement();
   elements.text.focus();

@@ -1,4 +1,4 @@
-importScripts("license.js", "input.js");
+importScripts("license.js");
 
 const FREE_CHARACTER_LIMIT = 6;
 
@@ -12,12 +12,11 @@ function isConsoleUrl(value) {
 }
 
 async function sendDirectly(tabId, text, keyboardLayout) {
-  const operations = ConsoleInput.buildOperations(text, keyboardLayout);
   const [{ result }] = await chrome.scripting.executeScript({
     target: { tabId },
     world: "MAIN",
-    args: [operations],
-    func: (inputOperations) => {
+    args: [text, keyboardLayout],
+    func: (input, selectedKeyboardLayout) => {
       const isClient = (value) =>
         value &&
         typeof value === "object" &&
@@ -76,16 +75,16 @@ async function sendDirectly(tabId, text, keyboardLayout) {
 
       try {
         const client = candidates[0];
-        for (const operation of inputOperations) {
-          if (operation.type === "keys") {
-            if (typeof client.sendKeyCodes !== "function") {
-              throw new Error("WebMKS stellt keine Tastencode-Eingabe bereit.");
-            }
-            client.sendKeyCodes(operation.keyCodes);
-          } else {
-            client.sendInputString(operation.value);
+        if (selectedKeyboardLayout !== "auto") {
+          if (typeof client.setOption !== "function") {
+            return {
+              ok: false,
+              error: "Diese WebMKS-Version erlaubt keine Änderung des Tastaturlayouts."
+            };
           }
+          client.setOption("keyboardLayoutId", selectedKeyboardLayout);
         }
+        client.sendInputString(input);
         return { ok: true };
       } catch {
         return {
