@@ -1,4 +1,4 @@
-importScripts("license.js");
+importScripts("license.js", "input.js");
 
 const FREE_CHARACTER_LIMIT = 6;
 
@@ -12,11 +12,12 @@ function isConsoleUrl(value) {
 }
 
 async function sendDirectly(tabId, text) {
+  const operations = ConsoleInput.buildOperations(text);
   const [{ result }] = await chrome.scripting.executeScript({
     target: { tabId },
     world: "MAIN",
-    args: [text],
-    func: (input) => {
+    args: [operations],
+    func: (inputOperations) => {
       const isClient = (value) =>
         value &&
         typeof value === "object" &&
@@ -74,7 +75,16 @@ async function sendDirectly(tabId, text) {
       }
 
       try {
-        candidates[0].sendInputString(input);
+        const client = candidates[0];
+        for (const operation of inputOperations) {
+          if (operation.type === "unicode" && typeof client.sendKeyCodes === "function") {
+            client.sendKeyCodes([-operation.codePoint]);
+          } else if (operation.type === "unicode") {
+            client.sendInputString(String.fromCodePoint(operation.codePoint));
+          } else {
+            client.sendInputString(operation.value);
+          }
+        }
         return { ok: true };
       } catch {
         return {

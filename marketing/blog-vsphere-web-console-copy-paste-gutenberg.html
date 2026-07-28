@@ -1,0 +1,238 @@
+<!-- wp:paragraph {"textColor":"vivid-cyan-blue","fontSize":"small"} -->
+<p class="has-vivid-cyan-blue-color has-text-color has-small-font-size"><strong>VMWARE · VIRTUALISIERUNG · GOOGLE CHROME</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":1,"style":{"typography":{"fontSize":"44px","lineHeight":"1.2"},"spacing":{"margin":{"top":"18px","bottom":"24px"}}}} -->
+<h1 class="wp-block-heading" style="margin-top:18px;margin-bottom:24px;font-size:44px;line-height:1.2">VMware vSphere Web Console: Copy &amp; Paste mit Chrome-Erweiterung lösen</h1>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontSize":"22px","lineHeight":"1.55"},"spacing":{"margin":{"top":"0","bottom":"32px"}}}} -->
+<p style="margin-top:0;margin-bottom:32px;font-size:22px;line-height:1.55">Text aus der lokalen Zwischenablage lässt sich in der separaten HTML5-Webkonsole von VMware vSphere 8 nicht einfach einfügen. <strong>Console Paste for vSphere</strong> bietet dafür einen kontrollierten und datenschutzfreundlichen Weg direkt in Google Chrome.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"align":"wide","sizeSlug":"full","linkDestination":"none"} -->
+<figure class="wp-block-image alignwide size-full"><img src="BILD-URL-HIER-EINSETZEN" alt="Chrome-Erweiterung überträgt Zwischenablage-Text in eine VMware vSphere Web Console" width="1200" height="630"/><figcaption class="wp-element-caption">Console Paste for vSphere überträgt geprüften Text in die aktive VMware-Webkonsole.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Wer VMware ESXi oder vCenter regelmäßig im Browser administriert, kennt diese Situation: Die virtuelle Maschine ist in der separaten HTML5-Webkonsole geöffnet, ein Befehl liegt bereits in der lokalen Zwischenablage – doch <strong>Copy &amp; Paste in der VMware vSphere Web Console funktioniert nicht</strong>. Selbst kurze Befehle, Benutzernamen oder Konfigurationswerte müssen Zeichen für Zeichen eingetippt werden.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Genau aus diesem praktischen Problem ist <strong>Console Paste for vSphere</strong> entstanden. Die Google-Chrome-Erweiterung übernimmt zuvor geprüften Text aus der lokalen Zwischenablage und gibt ihn über die Webkonsole in der virtuellen Maschine ein. Das spart Zeit, vermeidet Tippfehler und macht die Arbeit mit Linux- und Windows-VMs deutlich angenehmer.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote"><p><strong>Wichtig:</strong> Console Paste for vSphere stellt keine gemeinsame Zwischenablage her. Die Erweiterung tippt den vom Anwender freigegebenen Text kontrolliert in die geöffnete vSphere-Konsole ein.</p></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Warum funktioniert Copy &amp; Paste in der vSphere Web Console nicht?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Die HTML5-Konsole von vSphere, auch als <strong>WebMKS-Konsole</strong> bezeichnet, ist bewusst nicht mit einer frei nutzbaren gemeinsamen Zwischenablage ausgestattet. Broadcom beschreibt in seiner Wissensdatenbank, dass die frühere Copy-&amp;-Paste-Funktion in der HTML5-Webkonsole aus Sicherheitsgründen entfernt wurde. Als Alternativen werden unter anderem VMware Remote Console oder Funktionen innerhalb des Gastbetriebssystems genannt.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>In vielen Umgebungen helfen diese Alternativen jedoch nicht unmittelbar weiter:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><li>Auf der VM ist noch kein Remotezugriff eingerichtet.</li><li>SSH oder RDP darf aus Sicherheitsgründen nicht verwendet werden.</li><li>Die Maschine befindet sich gerade in der Installation oder Reparatur.</li><li>VMware Remote Console ist auf dem Arbeitsplatz nicht installiert.</li><li>Es muss lediglich ein kurzer Befehl zuverlässig übertragen werden.</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Die Lösung: Console Paste for vSphere</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>Console Paste for vSphere</strong> ist eine speziell für Google Chrome entwickelte Browser-Erweiterung. Sie richtet sich an Administratoren, IT-Dienstleister und technisch versierte Anwender, die VMware vSphere 8 über eine separate HTML5-Webkonsole bedienen.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list {"ordered":true} -->
+<ol class="wp-block-list"><li>Die virtuelle Maschine wird in der separaten vSphere-Webkonsole geöffnet.</li><li>Der gewünschte Text wird auf dem lokalen Windows-PC kopiert.</li><li>Über das Erweiterungssymbol wird Console Paste for vSphere geöffnet.</li><li>Der Text wird vor dem Senden noch einmal angezeigt und geprüft.</li><li>Erst nach einem bewussten Klick auf <strong>„In VM eingeben“</strong> wird der Inhalt an die aktive Konsole übergeben.</li></ol>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>Für die virtuelle Maschine wirkt die Übertragung wie eine Texteingabe über die Tastatur. Dadurch wird keine allgemeine Zwischenablage zwischen dem lokalen Computer und dem Gastbetriebssystem aktiviert.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Die wichtigsten Vorteile</h2>
+<!-- /wp:heading -->
+
+<!-- wp:columns -->
+<div class="wp-block-columns"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Weniger Tippfehler</h3>
+<!-- /wp:heading -->
+<!-- wp:paragraph -->
+<p>Befehle, Pfade und Konfigurationswerte müssen nicht länger mühsam abgetippt werden.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Bewusste Freigabe</h3>
+<!-- /wp:heading -->
+<!-- wp:paragraph -->
+<p>Der Text wird erst nach einer ausdrücklichen Aktion gelesen, angezeigt und übertragen.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Datenschutzfreundlich</h3>
+<!-- /wp:heading -->
+<!-- wp:paragraph -->
+<p>Es gibt keine Telemetrie, keine Analysefunktionen und keine Übertragung an externe Dienste.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:heading {"anchor":"lizenzierung"} -->
+<h2 class="wp-block-heading" id="lizenzierung">Lizenzierung: Free, Pro und Enterprise</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"fontSize":"medium"} -->
+<p class="has-medium-font-size">Die Erweiterung kann kostenlos getestet werden. Für die Übertragung längerer Texte sind <strong>Pro- und Enterprise-Lizenzen direkt beim Entwickler erhältlich</strong>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:table {"hasFixedLayout":true,"className":"is-style-stripes"} -->
+<figure class="wp-block-table is-style-stripes"><table class="has-fixed-layout"><thead><tr><th>Funktion</th><th class="has-text-align-center" data-align="center">Free</th><th class="has-text-align-center" data-align="center">Pro</th><th class="has-text-align-center" data-align="center">Enterprise</th></tr></thead><tbody><tr><td>Eingabe in die vSphere-Webkonsole</td><td class="has-text-align-center" data-align="center">Ja</td><td class="has-text-align-center" data-align="center">Ja</td><td class="has-text-align-center" data-align="center">Ja</td></tr><tr><td>Maximale Länge je Übertragung</td><td class="has-text-align-center" data-align="center"><strong>6 Unicode-Zeichen</strong></td><td class="has-text-align-center" data-align="center"><strong>Unbegrenzt</strong></td><td class="has-text-align-center" data-align="center"><strong>Unbegrenzt</strong></td></tr><tr><td>Signierte Offline-Lizenz</td><td class="has-text-align-center" data-align="center">–</td><td class="has-text-align-center" data-align="center">Ja</td><td class="has-text-align-center" data-align="center">Ja</td></tr><tr><td>Zentrale Chrome-Richtlinien</td><td class="has-text-align-center" data-align="center">–</td><td class="has-text-align-center" data-align="center">–</td><td class="has-text-align-center" data-align="center">Vorgesehen</td></tr></tbody></table></figure>
+<!-- /wp:table -->
+
+<!-- wp:group {"backgroundColor":"contrast","textColor":"base","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-base-color has-contrast-background-color has-text-color has-background"><!-- wp:heading {"level":3,"textColor":"vivid-green-cyan"} -->
+<h3 class="wp-block-heading has-vivid-green-cyan-color has-text-color">Wie erhalte ich eine Pro- oder Enterprise-Lizenz?</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Die Lizenzen werden aktuell persönlich und direkt ausgestellt. Senden Sie eine E-Mail mit dem gewünschten Lizenzmodell und einer kurzen Information zum geplanten Einsatz. Sie erhalten anschließend die weiteren Informationen zur Lizenz und Aktivierung.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Lizenzanfragen:</strong> <a href="mailto:info@heyder-net.de?subject=Lizenzanfrage%20Console%20Paste%20for%20vSphere&amp;body=Gew%C3%BCnschte%20Lizenz%3A%20Pro%20oder%20Enterprise%0AUnternehmen%20(optional)%3A%0AGeplanter%20Einsatz%3A">info@heyder-net.de</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"vivid-green-cyan","textColor":"contrast"} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-contrast-color has-vivid-green-cyan-background-color has-text-color has-background wp-element-button" href="mailto:info@heyder-net.de?subject=Lizenzanfrage%20Console%20Paste%20for%20vSphere&amp;body=Gew%C3%BCnschte%20Lizenz%3A%20Pro%20oder%20Enterprise%0AUnternehmen%20(optional)%3A%0AGeplanter%20Einsatz%3A">Pro- oder Enterprise-Lizenz anfragen</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p>Die Lizenz wird als <strong>signierter Offline-Lizenzschlüssel</strong> bereitgestellt und lokal in der Erweiterung geprüft. Für die Lizenzprüfung ist deshalb keine dauerhafte Verbindung zu einem Lizenzserver notwendig. Preise, Laufzeit und konkrete Enterprise-Anforderungen werden derzeit individuell abgestimmt.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Installation und Verfügbarkeit</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Console Paste for vSphere befindet sich zum Zeitpunkt der Veröffentlichung dieses Beitrags in der Prüfung für den <strong>Chrome Web Store</strong>. Sobald die Freigabe erfolgt ist, wird hier der direkte Link zur Store-Seite ergänzt.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Quellcode, technische Hinweise und Entwicklungsstand sind bereits öffentlich auf GitHub verfügbar.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://github.com/heydemar/vsphere-web-console-paste" target="_blank" rel="noreferrer noopener">Console Paste for vSphere auf GitHub ansehen</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Sicherheit und Datenschutz</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Die Erweiterung überwacht die Zwischenablage nicht permanent. Sie liest den Text erst nach einer bewussten Aktion und zeigt ihn vor der Übertragung an. Es gibt keine Telemetrie, keine externen Analysedienste und keine versteckten Netzwerkaufrufe.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Passwörter, private Schlüssel, Recovery-Codes und andere Geheimnisse sollten trotzdem nur über dafür vorgesehene, kontrollierte Verfahren verarbeitet werden. Vor jeder Übertragung sollte geprüft werden, ob die richtige VM geöffnet ist, der Cursor an der richtigen Stelle steht und der Befehl keine unbeabsichtigte Aktion auslöst.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Was die Erweiterung bewusst nicht macht</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><li>Sie aktiviert keine gemeinsame Zwischenablage zwischen PC und VM.</li><li>Sie kopiert keinen Text aus der VM zurück auf den lokalen Rechner.</li><li>Sie überträgt keine Dateien.</li><li>Sie ersetzt weder SSH noch RDP oder VMware Remote Console.</li><li>Sie ist auf die browserbasierte vSphere-Webkonsole und deren unterstützte Eingabefunktion ausgelegt.</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Für wen ist das Browser-Plugin interessant?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><li>VMware- und vSphere-Administratoren</li><li>Managed-Service-Provider und IT-Systemhäuser</li><li>Betreiber kleiner und mittlerer Rechenzentren</li><li>Helpdesk- und Support-Teams</li><li>Linux- und Windows-Administratoren</li><li>Anwender, die häufig virtuelle Maschinen installieren oder reparieren</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Fazit: Copy &amp; Paste für die VMware-Webkonsole praxisnah gelöst</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Manuelles Abtippen in der VMware vSphere Web Console kostet Zeit und erzeugt vermeidbare Fehler. <strong>Console Paste for vSphere</strong> setzt genau an dieser Stelle an: Die Chrome-Erweiterung übernimmt geprüften Zwischenablage-Text und gibt ihn kontrolliert in die aktive WebMKS-Konsole ein.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Die Free-Version ermöglicht einen unkomplizierten Einstieg. Wer längere Texte ohne Zeichenbegrenzung übertragen möchte, kann eine <strong>Pro- oder Enterprise-Lizenz direkt über <a href="mailto:info@heyder-net.de?subject=Lizenzanfrage%20Console%20Paste%20for%20vSphere">info@heyder-net.de</a> anfragen</strong>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:separator -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Häufig gestellte Fragen zu vSphere Copy &amp; Paste</h2>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Kann ich mit der Erweiterung Text in eine VMware-VM kopieren?</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Ja. Die Erweiterung gibt zuvor geprüften Text aus der lokalen Zwischenablage in die aktive vSphere-Webkonsole ein. Technisch handelt es sich um eine Texteingabe und nicht um eine gemeinsame Zwischenablage.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Kann ich Text aus der VM zurück auf meinen PC kopieren?</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Nein. Console Paste for vSphere arbeitet ausschließlich in Richtung der geöffneten VM-Konsole.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Wie kann ich eine Pro- oder Enterprise-Lizenz erhalten?</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Senden Sie eine Lizenzanfrage an <a href="mailto:info@heyder-net.de?subject=Lizenzanfrage%20Console%20Paste%20for%20vSphere">info@heyder-net.de</a>. Preise, Laufzeit und Anforderungen werden aktuell individuell abgestimmt.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Benötigt die Lizenz eine dauerhafte Internetverbindung?</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Nein. Pro- und Enterprise-Lizenzen werden als signierte Offline-Lizenzen lokal in der Erweiterung geprüft.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Ist Console Paste for vSphere ein offizielles VMware-Produkt?</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Nein. Das unabhängige Projekt wird weder von VMware noch von Broadcom unterstützt oder empfohlen. VMware und vSphere sind Marken ihrer jeweiligen Inhaber.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"fontSize":"small"} -->
+<p class="has-small-font-size"><strong>Weiterführende Information:</strong> <a href="https://knowledge.broadcom.com/external/article/313685/vmc-on-aws-enabling-copypaste-between-v.html" target="_blank" rel="noreferrer noopener">Broadcom Knowledge Base zur HTML5-Webkonsole</a></p>
+<!-- /wp:paragraph -->

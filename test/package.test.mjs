@@ -26,6 +26,15 @@ test("contains every declared extension asset", () => {
   }
 });
 
+test("packages the keyboard-layout-safe input helper", () => {
+  const worker = readFileSync("service-worker.js", "utf8");
+  const build = readFileSync("scripts/build-release.mjs", "utf8");
+  assert.equal(existsSync("input.js"), true);
+  assert.match(worker, /importScripts\("license\.js", "input\.js"\)/);
+  assert.match(worker, /sendKeyCodes\(\[-operation\.codePoint\]\)/);
+  assert.match(build, /"input\.js"/);
+});
+
 test("does not load remotely hosted scripts", () => {
   const html = readFileSync("popup.html", "utf8");
   assert.doesNotMatch(html, /<script[^>]+src=["']https?:/i);
